@@ -192,5 +192,4 @@
 
 @media (max-width: 640px) {
   .bg-hero-overlay { background: linear-gradient(90deg, color-mix(in oklab, var(--primary) 94%, transparent), color-mix(in oklab, var(--primary) 68%, transparent)); }
-  }
 }
