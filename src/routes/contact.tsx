@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Clock3, Mail, MapPin, Phone } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,5 +29,5 @@ function ContactPage() {
     <section className="bg-secondary"><div className="site-container flex flex-col items-start justify-between gap-7 py-14 md:flex-row md:items-center"><div><h2 className="text-3xl">Ready to Begin Your Teaching Journey?</h2><p className="mt-3 text-muted-foreground">Take the first step towards building your career in education.</p></div><Button asChild variant="outline" size="lg"><Link to="/courses">Explore our courses <ArrowRight /></Link></Button></div></section>
   </>;
 }
-function Field({ label, children }: { label: string; children: React.ReactNode }) { return <label className="grid gap-2 font-display text-sm font-semibold text-foreground">{label}{children}</label>; }
-function ContactItem({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) { return <div className="flex gap-4"><span className="icon-box">{icon}</span><div><h3 className="text-base">{title}</h3><div className="mt-2 text-sm leading-7 text-muted-foreground">{children}</div></div></div>; }
+function Field({ label, children }: { label: string; children: ReactNode }) { return <label className="grid gap-2 font-display text-sm font-semibold text-foreground">{label}{children}</label>; }
+function ContactItem({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) { return <div className="flex gap-4"><span className="icon-box">{icon}</span><div><h3 className="text-base">{title}</h3><div className="mt-2 text-sm leading-7 text-muted-foreground">{children}</div></div></div>; }
