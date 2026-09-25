@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, ChevronRight, Mail, MapPin, Menu, Phone, X } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { ArrowRight, BookOpen, ChevronRight, Mail, MapPin, Menu, Phone } from "lucide-react";
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import studentsImage from "@/assets/grace-students.jpg";
 
@@ -27,7 +27,6 @@ export function BrandMark({ inverse = false }: { inverse?: boolean }) {
 }
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur-md">
       <div className="site-container flex h-20 items-center justify-between gap-5">
@@ -40,20 +39,21 @@ export function SiteHeader() {
         <div className="hidden lg:block">
           <Button asChild size="lg"><Link to="/contact">Enquire now <ArrowRight /></Link></Button>
         </div>
-        <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"}>
-          {open ? <X /> : <Menu />}
-        </Button>
+        <details className="group relative lg:hidden">
+          <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-md text-primary transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label="Open menu">
+            <Menu className="group-open:hidden" />
+            <span className="hidden text-2xl leading-none group-open:block" aria-hidden="true">×</span>
+          </summary>
+          <div className="fixed left-0 right-0 top-20 border-t border-border bg-background px-5 py-5 shadow-lg">
+            <nav className="mx-auto flex max-w-xl flex-col" aria-label="Mobile navigation">
+              {navItems.map((item) => (
+                <Link key={item.to} to={item.to} activeOptions={{ exact: item.to === "/" }} className="border-b border-border py-3.5 font-display text-sm font-semibold text-foreground" activeProps={{ className: "border-b border-border py-3.5 font-display text-sm font-semibold text-primary" }}>{item.label}</Link>
+              ))}
+              <Button asChild size="lg" className="mt-5"><Link to="/contact">Enquire now <ArrowRight /></Link></Button>
+            </nav>
+          </div>
+        </details>
       </div>
-      {open && (
-        <div className="border-t border-border bg-background px-5 py-5 lg:hidden">
-          <nav className="mx-auto flex max-w-xl flex-col" aria-label="Mobile navigation">
-            {navItems.map((item) => (
-              <Link key={item.to} to={item.to} activeOptions={{ exact: item.to === "/" }} onClick={() => setOpen(false)} className="border-b border-border py-3.5 font-display text-sm font-semibold text-foreground" activeProps={{ className: "border-b border-border py-3.5 font-display text-sm font-semibold text-primary" }}>{item.label}</Link>
-            ))}
-            <Button asChild size="lg" className="mt-5"><Link to="/contact" onClick={() => setOpen(false)}>Enquire now <ArrowRight /></Link></Button>
-          </nav>
-        </div>
-      )}
     </header>
   );
 }
