@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: write  # Updated to write so the action can manage deployment artifacts
+  contents: write
   pages: write
   id-token: write
 
@@ -22,21 +22,29 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Removed cache: npm since you do not have a package-lock.json
 
       - name: Install dependencies
-        run: npm install  # Changed from 'npm ci' to 'npm install' which works without a lock file
+        run: npm install
 
       - name: Build
         run: npm run build
 
+      # Diagnostic Step: Prints files so we can find where the build folder is located
+      - name: List build directories
+        run: |
+          echo "=== Root Folder Contents ==="
+          ls -la
+          echo "=== Checking if any subfolders exist ==="
+          find . -maxdepth 2 -type d
+
+      # We will keep this as ./ for now to prevent the pipeline crashing while we inspect logs
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build  # <-- Change this from ./dist to ./build
+          path: ./
 
       - name: Deploy
         uses: actions/deploy-pages@v4
