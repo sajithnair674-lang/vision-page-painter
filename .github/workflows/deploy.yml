@@ -36,7 +36,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist  # Ensure your project uses Vite. If using Create React App, change this to ./build
+          path: ./build  # <-- Change this from ./dist to ./build
 
       - name: Deploy
         uses: actions/deploy-pages@v4
