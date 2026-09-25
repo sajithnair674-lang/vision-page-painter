@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write  # Updated to write so the action can manage deployment artifacts
   pages: write
   id-token: write
 
@@ -22,10 +22,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          # Removed cache: npm since you do not have a package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install  # Changed from 'npm ci' to 'npm install' which works without a lock file
 
       - name: Build
         run: npm run build
@@ -36,7 +36,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./dist  # Ensure your project uses Vite. If using Create React App, change this to ./build
 
       - name: Deploy
         uses: actions/deploy-pages@v4
