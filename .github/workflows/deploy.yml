@@ -29,22 +29,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Diagnostic Step: Prints files so we can find where the build folder is located
-      - name: List build directories
-        run: |
-          echo "=== Root Folder Contents ==="
-          ls -la
-          echo "=== Checking if any subfolders exist ==="
-          find . -maxdepth 2 -type d
-
-      # We will keep this as ./ for now to prevent the pipeline crashing while we inspect logs
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: ./.output/public
 
       - name: Deploy
         uses: actions/deploy-pages@v4
