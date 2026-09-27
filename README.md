@@ -2,21 +2,18 @@
 
 create a multipe page website using given content and brand guidelines ...the outlook like profession modern attair
 
-This project was built with [Lovable](https://lovable.dev).
 
 **Live app**: https://vision-page-painter.lovable.app
 
-## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/4c945684-0392-4069-a9de-f58896f9449b).
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- **Ship faster**: describe what you want to build 
+- **Stay in sync**: every change made 
+- **Full ownership**: this code is yours.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+
 
 ```sh
 git clone <this-repository-url>
