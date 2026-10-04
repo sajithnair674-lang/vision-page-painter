@@ -19,8 +19,8 @@ export function BrandMark({ inverse = false }: { inverse?: boolean }) {
         <BookOpen size={20} strokeWidth={1.8} />
       </span>
       <span className="min-w-0 leading-none">
-        <span className={inverse ? "block font-display text-lg font-semibold text-primary-foreground" : "block font-display text-lg font-semibold text-primary"}>Grace Casa</span>
-        <span className={inverse ? "mt-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-primary-foreground/70" : "mt-1 block text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground"}>de profesores · Montessori TTC</span>
+        <span className={inverse ? "block font-display text-xl text-primary-foreground" : "block font-display text-xl text-primary"}>Grace Casa</span>
+        <span className={inverse ? "mt-1 block text-[9px] font-semibold uppercase tracking-[0.2em] text-primary-foreground/70" : "mt-1 block text-[9px] font-semibold uppercase tracking-[0.2em] text-muted-foreground"}>de profesores · Montessori TTC</span>
       </span>
     </Link>
   );
@@ -28,7 +28,7 @@ export function BrandMark({ inverse = false }: { inverse?: boolean }) {
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur-xl">
       <div className="site-container flex h-20 items-center justify-between gap-5">
         <BrandMark />
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
@@ -78,10 +78,10 @@ function FooterGroup({ title, children }: { title: string; children: ReactNode }
 
 export function PageHero({ eyebrow, title, description, image = studentsImage }: { eyebrow: string; title: string; description: string; image?: string }) {
   return (
-    <section className="relative isolate min-h-[460px] overflow-hidden bg-primary">
+    <section className="relative isolate min-h-[540px] overflow-hidden bg-primary">
       <img src={image} alt="Women preparing for a professional career in teaching" width={1408} height={1056} className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-hero-overlay" />
-      <div className="site-container relative flex min-h-[460px] items-end py-16 md:py-20">
+      <div className="site-container relative flex min-h-[540px] items-end py-16 md:py-20">
         <div className="max-w-3xl animate-rise"><p className="eyebrow text-primary-foreground/75">{eyebrow}</p><h1 className="mt-5 max-w-2xl text-primary-foreground">{title}</h1><p className="mt-6 max-w-xl text-lg leading-8 text-primary-foreground/82">{description}</p></div>
       </div>
     </section>
@@ -97,7 +97,7 @@ export function CTASection({ title = "Your teaching career starts here", descrip
 }
 
 export function IconCard({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
-  return <article className="feature-card"><span className="icon-box">{icon}</span><h3 className="mt-6 text-xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{children}</p></article>;
+  return <article className="feature-card"><span className="icon-box">{icon}</span><h3 className="mt-6 text-2xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{children}</p></article>;
 }
 
 export function ContactStrip() {
